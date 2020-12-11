@@ -19,6 +19,7 @@ Notes:
 - Must provide tests and coverage
 - Must provide an automated pipeline
 - Must follow the Testing Guidelines and Code Style Guidelines
+- Must Use a Cache System to reduce costs with cloud servers
 ```
 
 Test Guilines: you can read [here](Tests-Guideline.pdf)
