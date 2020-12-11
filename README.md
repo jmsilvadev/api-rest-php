@@ -26,13 +26,37 @@ Test Guidelines: you can read [here](Tests-Guideline.pdf)
  
 Code Style: you can read [here](CodingSytle-PHP.pdf)
 
-## Open API Specification
+## How To Use
+
+### Start Environment
+
+To use the system, simple Type `make up` to start the container
+and `make down` to stop it.
+
+```bash
+make up
+make down
+```
+
+### Accessing API
+
+After start the conteiner, you can access the API, using any http client,
+connect in this address `http://localhost:8080/students/`. For example using CURL:
+
+```
+curl http://localhost:8080/students/
+```
+
+If something wrong occurs, see the Setup Section below, to ensure that all initial steps were made.
+
+To know all endpoint, see OAS bellow.
+
+### Open API Specification
 
 This api use OAS and it spec can be visualized in the openapi.json [here](https://gitlab.com/jmsilvadev/ixdf-api/-/blob/master/openapi.json) file and and through the endpoint `/oas`.
 
 
 ## Development
-
 
 ### Semantic Versioning
 
