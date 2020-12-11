@@ -7,7 +7,7 @@ services:
 
 variables:
   _DOCKER_IMAGE_NAME: ixdf-api
-  _DOCKER_REGISTRY_NAMESPACE: jmsilvadev/ixdf-api
+  _DOCKER_REGISTRY_NAMESPACE: jmsilvadev/ixdf
   MYSQL_HOST: mysql
   MYSQL_ROOT_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
   MYSQL_DATABASE: ixdf
@@ -48,7 +48,7 @@ Tag:
     - master
 
 CodeQuality:
-  image: registry.gitlab.com/jmsilvadev/ixdf-api
+  image: registry.gitlab.com/jmsilvadev/ixdf
   stage: code lint
   before_script:
     - cd src
@@ -67,7 +67,7 @@ CodeQuality:
 
 Tests:
   stage: test
-  image: registry.gitlab.com/jmsilvadev/ixdf-api
+  image: registry.gitlab.com/jmsilvadev/ixdf
   before_script:
     - /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf&
     - cd src
