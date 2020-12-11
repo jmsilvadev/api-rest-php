@@ -27,7 +27,7 @@ Build:
     - docker build -t registry.gitlab.com/jmsilvadev/ixdf .
     - docker push registry.gitlab.com/jmsilvadev/ixdf
   only:
-    - master
+    - tags
 
 NextVersion:
   stage: build

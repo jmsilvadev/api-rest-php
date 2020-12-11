@@ -22,16 +22,33 @@ Notes:
 - Must Use a Cache System to reduce costs with cloud servers
 ```
 
-Test Guilines: you can read [here](Tests-Guideline.pdf)
+Test Guidelines: you can read [here](Tests-Guideline.pdf)
  
 Code Style: you can read [here](CodingSytle-PHP.pdf)
 
-## OAS
+## Open API Specification
 
 This api use OAS and it spec can be visualized in the openapi.json [here](https://gitlab.com/jmsilvadev/ixdf-api/-/blob/master/openapi.json) file and and through the endpoint `/oas`.
 
 
 ## Development
+
+
+### Semantic Versioning
+
+The API uses the automatic versioning system, which facilitates version control by minimizing breaks, providing faster and more effective regression resources and increasing the power of deploys. Every time a merge request is accepted, the pipeline will generate a TAG and store it in the repository. The tags can be viewed [here](https://gitlab.com/jmsilvadev/ixdf/-/tags).
+
+
+### Cache System
+
+The API uses the self-managing dynamic cache system using Redis. Every time a GET request arrives at the API it checks if there is already a cache for the call and if so, it returns the cache value, if not, it passes the request to the API and at the end of the cycle caches the response. When the API receives action verbs like POST / PUT, the cache system automatically invalidates only the affected endpoints. In this way, the API has a fully automated cache management, significantly reducing the traffic and use of the computational resources of the servers.
+
+
+### DevOps
+
+The API was conceived within the devops culture using continuous integration and continuous delivery through automated pipelines. The entire environment is containerized and easily manipulated through a Makefile file.
+Pipelines can be viewed [here](https://gitlab.com/jmsilvadev/ixdf/-/pipelines).
+
 
 ### Setup project
 
