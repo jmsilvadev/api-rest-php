@@ -6,7 +6,7 @@ services:
   - redis:latest
 
 variables:
-  _DOCKER_IMAGE_NAME: ixdf-api
+  _DOCKER_IMAGE_NAME: ixdf
   _DOCKER_REGISTRY_NAMESPACE: jmsilvadev/ixdf
   MYSQL_HOST: mysql
   MYSQL_ROOT_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
@@ -24,8 +24,8 @@ Build:
   stage: release
   script:
     - docker login registry.gitlab.com -u jmsilvadev -p $PERSONAL_TOKEN
-    - docker build -t registry.gitlab.com/jmsilvadev/ixdf-api .
-    - docker push registry.gitlab.com/jmsilvadev/ixdf-api
+    - docker build -t registry.gitlab.com/jmsilvadev/ixdf .
+    - docker push registry.gitlab.com/jmsilvadev/ixdf
   only:
     - tags
 
