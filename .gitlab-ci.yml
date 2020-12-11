@@ -20,15 +20,6 @@ stages:
   - test
   - release
 
-Build:
-  stage: build
-  script:
-    - docker login registry.gitlab.com -u jmsilvadev -p $PERSONAL_TOKEN
-    - docker build -t registry.gitlab.com/jmsilvadev/ixdf .
-    - docker push registry.gitlab.com/jmsilvadev/ixdf
-  only:
-    - tags
-
 NextVersion:
   stage: build
   image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.20.4

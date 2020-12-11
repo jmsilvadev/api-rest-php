@@ -16,7 +16,9 @@ return [
             'adapter' => 'mysql',
             'host' => array_key_exists('MYSQL_HOST', $_SERVER) ? $_SERVER['MYSQL_HOST'] : 'mysql',
             'user' => array_key_exists('MYSQL_USER', $_SERVER) ? $_SERVER['MYSQL_USER'] : 'ixdf',
-            'pass' => array_key_exists('MYSQL_PASSWORD', $_SERVER) ? $_SERVER['MYSQL_PASSWORD'] : 'KwQgcTvYBO4yuBB43VCHS2g5',
+            'pass' => array_key_exists('MYSQL_PASSWORD', $_SERVER) ?
+                $_SERVER['MYSQL_PASSWORD'] :
+                'KwQgcTvYBO4yuBB43VCHS2g5',
             'name' => array_key_exists('MYSQL_DATABASE', $_SERVER) ? $_SERVER['MYSQL_DATABASE'] : 'ixdf',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_general_ci',
