@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  app:
+    build: ./
+    container_name: ixdf-api
+    environment:
+      WAIT_HOSTS: mysql:3306, redis:6379
+
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: ixdf
+      MYSQL_USER: ixdf
+      MYSQL_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
+
+      REDIS_HOST: redis
+
+      ENVIRONMENT: development
+
+    ports:
+      - 8080:8080
+    volumes:
+      - ${PWD}/src:/var/www/html:delegated
+
+  redis:
+    image: redis:6.0.1-alpine
+    healthcheck:
+      test: redis-cli ping
+    ports:
+      - 6379:6379
+
+  mysql:
+    image: mysql:8.0.17
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    cap_add:
+      - CAP_SYS_NICE
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: ixdf
+      MYSQL_USER: ixdf
+      MYSQL_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
+    ports:
+      - 3306:3306

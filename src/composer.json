@@ -1,0 +1,71 @@
+{
+  "name": "jmsilvadev/api-contents",
+  "type": "project",
+  "description": "API IxDF",
+  "version": "0.0.0-dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "josuesilva",
+      "email": "jmsilvadev@gmail.com",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "php":                                ">=7.4",
+    "ext-fileinfo":                       "*",
+    "ext-json":                           "*",
+    "ext-pdo":                            "*",
+    "ext-phalcon":                        "^4",
+    "cocur/slugify":                      "4.0.0",
+    "elasticsearch/elasticsearch":        "^7.4",
+    "robmorgan/phinx":                    "^0.11.6",
+    "league/fractal": "^0.19.2",
+    "ext-redis": "*",
+    "cache/redis-adapter": "^1"
+  },
+  "require-dev": {
+    "codeception/c3": "2.5.*",
+    "codeception/codeception": "^4.1",
+    "codeception/module-asserts": "^1.2",
+    "codeception/module-phalcon": "^1.0.0",
+    "codeception/module-phpbrowser": "^1.0.0",
+    "codeception/module-rest": "^1.2",
+    "ergebnis/composer-normalize": "^2.5",
+    "fzaninotto/faker": "^1.9",
+    "hoa/console": "^3.17",
+    "mockery/mockery": "^1.3",
+    "phalcon/ide-stubs": "^4",
+    "phploc/phploc": "^5.0",
+    "phpmd/phpmd": "^2.8",
+    "phpmetrics/phpmetrics": "^2.6",
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    },
+    "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\Controllers\\": "app/Controllers/",
+      "App\\Helpers\\": "app/Helpers/",
+      "App\\Models\\": "app/Models/",
+      "App\\Middlewares\\": "app/Middlewares/",
+      "App\\Providers\\": "app/Providers/",
+      "App\\Services\\": "app/Services/",
+      "App\\Repositories\\": "app/Repositories/",
+      "App\\Traits\\": "app/Traits/",
+      "App\\Errors\\": "app/Errors/",
+      "App\\Factories\\": "app/Factories/",
+      "App\\Observers\\": "app/Observers/",
+      "App\\DTO\\": "app/DTO/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}

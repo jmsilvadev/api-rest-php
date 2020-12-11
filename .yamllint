@@ -1,0 +1,8 @@
+extends: default
+
+ignore: |
+  src/vendor
+
+rules:
+  line-length: disable
+  document-start: disable

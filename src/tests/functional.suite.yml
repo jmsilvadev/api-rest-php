@@ -1,0 +1,8 @@
+actor: FunctionalTester
+
+modules:
+  enabled:
+    - \Helper\Functional
+    - Phalcon:
+        bootstrap: 'app/config/bootstrap.php'
+  step_decorators: ~

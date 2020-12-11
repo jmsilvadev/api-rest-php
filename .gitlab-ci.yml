@@ -1,0 +1,89 @@
+image: docker:latest
+
+services:
+  - docker:19-dind
+  - mysql:latest
+  - redis:latest
+
+variables:
+  _DOCKER_IMAGE_NAME: ixdf-api
+  _DOCKER_REGISTRY_NAMESPACE: jmsilvadev/ixdf-api
+  MYSQL_HOST: mysql
+  MYSQL_ROOT_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
+  MYSQL_DATABASE: ixdf
+  MYSQL_USER: ixdf
+  MYSQL_PASSWORD: KwQgcTvYBO4yuBB43VCHS2g5
+
+stages:
+  - build
+  - code lint
+  - test
+  - release
+
+Build:
+  stage: release
+  script:
+    - docker login registry.gitlab.com -u jmsilvadev -p $PERSONAL_TOKEN
+    - docker build -t registry.gitlab.com/jmsilvadev/ixdf-api .
+    - docker push registry.gitlab.com/jmsilvadev/ixdf-api
+  only:
+    - tags
+
+NextVersion:
+  stage: build
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.20.4
+  script:
+    - echo "RELEASE_VERSION=$(release -t $PERSONAL_TOKEN next-version)" > build_variables
+    - . build_variables
+    - if [ -z "$RELEASE_VERSION" ]; then exit 1; fi
+  only:
+    - master
+
+Tag:
+  stage: release
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.20.4
+  script:
+    - release -t $PERSONAL_TOKEN tag
+  only:
+    - master
+
+CodeQuality:
+  image: registry.gitlab.com/jmsilvadev/ixdf-api
+  stage: code lint
+  before_script:
+    - cd src
+    - composer install
+  script:
+    - php vendor/bin/phpcs -sv --standard=PSR12 --extensions=php --ignore=vendor,tests,phinx.php,c3.php,db,node_modules  .
+    - php vendor/bin/phpmd . text cleancode,codesize,design,unusedcode --exclude vendor,tests,phinx.php,c3.php,db --ignore-violations-on-exit
+    - ./vendor/phpmetrics/phpmetrics/bin/phpmetrics --excluded-dirs 'vendor','tests','db' --report-html=./tests/_output/php_code_quality/metrics_results .
+  only:
+    - merge_requests
+    - master
+  artifacts:
+    when: always
+    paths:
+      - ./tests/_output/php_code_quality/metrics_results
+
+Tests:
+  stage: test
+  image: registry.gitlab.com/jmsilvadev/ixdf-api
+  before_script:
+    - /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf&
+    - cd src
+    - composer install
+    - vendor/bin/phinx migrate
+    - vendor/bin/phinx seed:run -v -s MainSeeder
+    - export REDIS_HOST=redis
+    - export XDEBUG_MODE=coverage
+  script:
+    - php -dxdebug.mode=coverage vendor/bin/codecept run --coverage --coverage-xml --coverage-html --coverage-text
+    - cat tests/_output/coverage.txt
+  only:
+    - merge_requests
+    - master
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  artifacts:
+    when: always
+    paths:
+      - ./tests/_output/

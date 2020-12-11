@@ -1,0 +1,11 @@
+actor: ApiTester
+
+modules:
+  step_decorators: ~
+  enabled:
+    - \Helper\Api
+    - REST:
+        depends: PhpBrowser
+        part: Json
+    - PhpBrowser:
+        url: http://localhost:8080
