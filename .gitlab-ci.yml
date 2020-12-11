@@ -21,7 +21,7 @@ stages:
   - release
 
 Build:
-  stage: release
+  stage: build
   script:
     - docker login registry.gitlab.com -u jmsilvadev -p $PERSONAL_TOKEN
     - docker build -t registry.gitlab.com/jmsilvadev/ixdf .
