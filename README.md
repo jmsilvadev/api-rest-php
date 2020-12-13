@@ -6,6 +6,9 @@ REST API: Simples API using Phalcon Framework
 
 I decided to create a simple API from scratch to demonstrate my way of programming and applying OOP concepts and best practices. As well as DevOps concepts and tests. The pipelines were made to run in GitLab.
 
+See original repository in GitLab [here](https://gitlab.com/jmsilvadev/ixdf)
+
+
 ### User History
 
 This project is based in this user history:
