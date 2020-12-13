@@ -1,6 +1,6 @@
-# IxDF API
+# REST API
 
-IxDF API: Simples API using Phalcon Framework
+REST API API: Simples API using Phalcon Framework
 
 ## Motivation
 
