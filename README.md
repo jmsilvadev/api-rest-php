@@ -4,7 +4,7 @@ IxDF API: Simples API using Phalcon Framework
 
 ## Motivation
 
-I decided to create a simple API from scratch to demonstrate my way of programming and applying OOP concepts and best practices. As well as DevOps concepts and tests.
+I decided to create a simple API from scratch to demonstrate my way of programming and applying OOP concepts and best practices. As well as DevOps concepts and tests. The pipelines were made to run in GitLab.
 
 ### User History
 
@@ -181,7 +181,7 @@ To learn all the commands the MakeFile can do just use the command
 
 ## 1. How do you decide when the test coverage of a given feature is good enough? How do you decide what should be tested and what sort of tests should be used?
 
-For me, code coverage should be at least 95% with a CRAP index as low as possible. For me, it is not feasible to have a low code coverage since the use of TDD forces you to do your tests even before the code. :) That is, at the end of the development cycle your coverage must be at least 70%, that is why we know that the first tests are done so that the functionality passes, but then there must be validation tests that will increase this percentage. My coverage is generally above 95% in production systems, and the remaining 5% are pieces of code that do not have an advantageous cost / benefit ratio, that is, it would be very complex to develop a code to cover a line that would be, for example , a throw. Attached is the test guideline that I always try to apply to the companies I go to and that was adopted by my current company after an awareness work I did with the team.
+For me, code coverage should be at least 95% with a CRAP index as low as possible. For me, it is not feasible to have a low code coverage since the use of TDD forces you to do your tests even before the code. :) That is, at the end of the development cycle your coverage must be at least 70%, that is why we know that the first tests are done so that the functionality passes, but then there must be validation tests that will increase this percentage. My coverage is generally above 95% in production systems, and the remaining 5% are pieces of code that do not have an advantageous cost / benefit ratio, that is, it would be very complex to develop a code to cover a line that would be, for example , a throw. Attached is the test guideline that I always try to apply to the companies I go to.
 
 ## 2. How do you reduce code coupling?
 
