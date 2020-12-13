@@ -1,6 +1,6 @@
 # REST API
 
-REST API API: Simples API using Phalcon Framework
+REST API: Simples API using Phalcon Framework
 
 ## Motivation
 
