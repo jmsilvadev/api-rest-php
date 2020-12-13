@@ -4,7 +4,7 @@ IxDF API: Simples API using Phalcon Framework
 
 ## Motivation
 
-Since I cannot use or reveal proprietary company code, I decided to create a simple API from scratch to demonstrate my way of programming and applying OOP concepts and best practices. As well as DevOps concepts and tests.
+I decided to create a simple API from scratch to demonstrate my way of programming and applying OOP concepts and best practices. As well as DevOps concepts and tests.
 
 ### User History
 
